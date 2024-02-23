@@ -1,0 +1,28 @@
+<Project Sdk="MSBuild.SDK.SystemWeb/4.0.88">
+
+  <PropertyGroup>
+    <TargetFrameworks>net462;net47;net471;net472;net48;net481</TargetFrameworks>
+    <UseIISExpress>true</UseIISExpress>
+    <NoWarn>$(NoWarn);CC0091</NoWarn>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <OverwriteAppConfigWithBindingRedirects>true</OverwriteAppConfigWithBindingRedirects>
+    <GeneratedBindingRedirectsAction>Overwrite</GeneratedBindingRedirectsAction>
+    <MvcBuildViews>false</MvcBuildViews>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <VisualStudioVersion>17.0</VisualStudioVersion>
+    <MicrosoftNetCompilersToolset_Version>4.8.0</MicrosoftNetCompilersToolset_Version>
+    <MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version Condition="'$(TargetFramework)' == 'net462' OR '$(TargetFramework)' == 'net47' OR '$(TargetFramework)' == 'net471'">3.6.0</MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>
+    <MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version Condition="'$(TargetFramework)' == 'net472' OR '$(TargetFramework)' == 'net48' OR '$(TargetFramework)' == 'net481'  ">4.1.0</MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AdaskoTheBeAsT.Owin.SecureExceptions\AdaskoTheBeAsT.Owin.SecureExceptions.csproj" />
+  </ItemGroup>
+
+</Project>

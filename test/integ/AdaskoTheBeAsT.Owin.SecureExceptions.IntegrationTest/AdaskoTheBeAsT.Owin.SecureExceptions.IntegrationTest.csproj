@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net462;net47;net471;net472;net48;net481</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\samples\SampleWebApi\SampleWebApi.csproj" />
+    <ProjectReference Include="..\..\..\src\AdaskoTheBeAsT.Owin.SecureExceptions\AdaskoTheBeAsT.Owin.SecureExceptions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.Testing" Version="4.2.2" />
+  </ItemGroup>
+
+</Project>
