@@ -11,7 +11,7 @@ public class NoHttpResourceFoundSanitizerMiddleware(OwinMiddleware next)
 {
     private const string NoHttpResourceFoundMessage = "No HTTP resource was found that matches the request URI";
 
-    private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
+    private static readonly JsonSerializerSettings JsonSerializerSettings = new()
     {
         NullValueHandling = NullValueHandling.Ignore,
     };

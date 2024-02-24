@@ -1,6 +1,5 @@
 using System;
 using System.Net.Http;
-using System.Security.Policy;
 using System.Threading.Tasks;
 using AdaskoTheBeAsT.Owin.SecureExceptions.IntegrationTest.Util;
 using FluentAssertions;
