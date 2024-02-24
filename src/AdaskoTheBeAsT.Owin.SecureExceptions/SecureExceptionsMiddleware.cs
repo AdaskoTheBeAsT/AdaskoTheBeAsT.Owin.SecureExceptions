@@ -5,27 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin;
 
-using AppFunc = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
-
 namespace AdaskoTheBeAsT.Owin.SecureExceptions;
 
 public class SecureExceptionsMiddleware
 
     // : OwinMiddleware
 {
-    private readonly AppFunc _next;
+    private readonly Func<IDictionary<string, object>, Task> _next;
     private readonly SecureExceptionsParameters _parameters;
     private readonly ITransformsCollection _transformsCollection;
 
     public SecureExceptionsMiddleware(
-        AppFunc next,
+        Func<IDictionary<string, object>, Task> next,
         ITransformsCollection transformsCollection)
         : this(next, transformsCollection, DefaultProperties())
     {
     }
 
     public SecureExceptionsMiddleware(
-        AppFunc next,
+        Func<IDictionary<string, object>, Task> next,
         ITransformsCollection transformsCollection,
         SecureExceptionsParameters parameters)
     {
@@ -53,9 +51,9 @@ public class SecureExceptionsMiddleware
                 transformer = _transformsCollection.FindTransform(exception);
             }
         }
-        catch (Exception catchedException)
+        catch (Exception caughtException)
         {
-            exception = catchedException;
+            exception = caughtException;
 
             // check if we can transform it, otherwise we should throw it
             transformer = _transformsCollection.FindTransform(exception);

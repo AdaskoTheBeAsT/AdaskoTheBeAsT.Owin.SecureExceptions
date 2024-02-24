@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AdaskoTheBeAsT.Owin.SecureExceptions.WebApi2;
 using Owin;
 
 namespace AdaskoTheBeAsT.Owin.SecureExceptions.Extensions;
@@ -17,4 +18,7 @@ public static class AppBuilderExtensions
 
         app.Use<SecureExceptionsMiddleware>(transforms, options);
     }
+
+    public static void UseNoHttpResourceFoundSanitizer(this IAppBuilder app) =>
+        app.Use<NoHttpResourceFoundSanitizerMiddleware>();
 }

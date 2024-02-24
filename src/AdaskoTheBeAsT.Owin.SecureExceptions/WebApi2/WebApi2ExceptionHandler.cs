@@ -7,19 +7,12 @@ using System.Web.Http.ExceptionHandling;
 
 namespace AdaskoTheBeAsT.Owin.SecureExceptions.WebApi2;
 
-public class WebApi2ExceptionHandler : IExceptionHandler
+public class WebApi2ExceptionHandler(ITransformsCollection transforms) : IExceptionHandler
 {
-    private readonly ITransformsCollection _transforms;
-
-    public WebApi2ExceptionHandler(ITransformsCollection transforms)
-    {
-        _transforms = transforms;
-    }
-
     public Task HandleAsync(ExceptionHandlerContext context, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        Handle(context, _transforms);
+        Handle(context, transforms);
         return Task.FromResult(0);
     }
 

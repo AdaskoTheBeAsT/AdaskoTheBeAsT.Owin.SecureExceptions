@@ -16,5 +16,9 @@ public partial class Startup
             name: "DefaultApi",
             routeTemplate: "api/{controller}/{id}",
             defaults: new { id = RouteParameter.Optional });
+        httpConfiguration.Routes.MapHttpRoute(
+            name: "default-catch-all",
+            routeTemplate: "{*url}",
+            defaults: new { controller = "Sanitize", action = "Get" });
     }
 }
