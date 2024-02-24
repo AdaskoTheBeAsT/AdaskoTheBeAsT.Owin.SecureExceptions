@@ -152,7 +152,7 @@ await this.FeatureBackgroundAsync();
 #line hidden
 #line 15
     await testRunner.ThenAsync("I should get error with message \'{\"Message\":\"No HTTP resource was found that matc" +
-                        "hes the request URI\"}\'", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+                        "hes the request URI.\",\"MessageDetail\":null}\'", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -161,11 +161,15 @@ await this.FeatureBackgroundAsync();
         [Xunit.SkippableTheoryAttribute(DisplayName="Calling api with some script injection")]
         [Xunit.TraitAttribute("FeatureTitle", "CallingApi")]
         [Xunit.TraitAttribute("Description", "Calling api with some script injection")]
-        [Xunit.InlineDataAttribute("/api/values?query=<script>alert(\'xss\')</script>", "{\"Message\":\"No HTTP resource was found that matches the request URI\"}", new string[0])]
+        [Xunit.InlineDataAttribute("/api/values?query=<script>alert(\'xss\')</script>", "{\"Message\":\"No HTTP resource was found that matches the request URI.\",\"MessageDet" +
+            "ail\":null}", new string[0])]
         [Xunit.InlineDataAttribute("/api/values/%2522%253e%253cscript%253ealert(\'xss\')%253c%252fscript%253e", "\"Error\"", new string[0])]
-        [Xunit.InlineDataAttribute("/api/values?query=\"><script>alert(\'xss\')</script>", "{\"Message\":\"No HTTP resource was found that matches the request URI\"}", new string[0])]
-        [Xunit.InlineDataAttribute("/api/values?query=%22onmouseover%3d%22alert(\'xss\')%22", "{\"Message\":\"No HTTP resource was found that matches the request URI\"}", new string[0])]
-        [Xunit.InlineDataAttribute("/api/values?query=\';DROP TABLE Users;--", "{\"Message\":\"No HTTP resource was found that matches the request URI\"}", new string[0])]
+        [Xunit.InlineDataAttribute("/api/values?query=\"><script>alert(\'xss\')</script>", "{\"Message\":\"No HTTP resource was found that matches the request URI.\",\"MessageDet" +
+            "ail\":null}", new string[0])]
+        [Xunit.InlineDataAttribute("/api/values?query=%22onmouseover%3d%22alert(\'xss\')%22", "{\"Message\":\"No HTTP resource was found that matches the request URI.\",\"MessageDet" +
+            "ail\":null}", new string[0])]
+        [Xunit.InlineDataAttribute("/api/values?query=\';DROP TABLE Users;--", "{\"Message\":\"No HTTP resource was found that matches the request URI.\",\"MessageDet" +
+            "ail\":null}", new string[0])]
         public async System.Threading.Tasks.Task CallingApiWithSomeScriptInjection(string sampleUrl, string expected, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

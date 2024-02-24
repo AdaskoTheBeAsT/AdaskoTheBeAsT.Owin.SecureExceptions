@@ -12,7 +12,7 @@ pool:
 
 variables:
   buildConfiguration: "Release"
-  unitTestProjects: "**/test/unit/**/*.csproj"
+  unitTestProjects: "**/test/**/*.csproj"
   testResultsDirectory: "d:/a/1/TestResults"
   MSBUILDSINGLELOADCONTEXT: 1
   disable.coverage.autogenerate: "true"

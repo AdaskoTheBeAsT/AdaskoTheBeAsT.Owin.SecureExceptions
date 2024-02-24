@@ -1,4 +1,5 @@
 using System.Net;
+using System.Web;
 using System.Web.Http;
 using AdaskoTheBeAsT.Owin.SecureExceptions;
 
@@ -9,6 +10,9 @@ public partial class Startup
     private ITransformsCollection GetSecureExceptions()
     {
         return TransformsCollectionBuilder.Begin()
+
+            .Map<HttpRequestValidationException>()
+            .To(HttpStatusCode.BadRequest, "Invalid input", ex => ex.Message)
 
             .Map<HttpResponseException>()
             .To(

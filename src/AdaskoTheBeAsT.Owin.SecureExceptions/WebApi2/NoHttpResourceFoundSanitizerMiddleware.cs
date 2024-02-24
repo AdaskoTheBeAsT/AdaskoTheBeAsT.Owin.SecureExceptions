@@ -1,5 +1,6 @@
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Owin;
 using Newtonsoft.Json;
@@ -9,12 +10,13 @@ namespace AdaskoTheBeAsT.Owin.SecureExceptions.WebApi2;
 public class NoHttpResourceFoundSanitizerMiddleware(OwinMiddleware next)
     : OwinMiddleware(next)
 {
-    private const string NoHttpResourceFoundMessage = "No HTTP resource was found that matches the request URI";
+    private static readonly Regex FindMessageWithUrlRegex = new Regex(
+        @"^([{]\s*""[Mm]essage"":\s*""No\sHTTP\sresource\swas\sfound\sthat\smatches\sthe\srequest\sURI)(.*)",
+        RegexOptions.Compiled | RegexOptions.Multiline);
 
-    private static readonly JsonSerializerSettings JsonSerializerSettings = new()
-    {
-        NullValueHandling = NullValueHandling.Ignore,
-    };
+    private static readonly Regex ReplaceUrlRegex = new Regex(
+        @"^(No\sHTTP\sresource\swas\sfound\sthat\smatches\sthe\srequest\sURI)(.*)",
+        RegexOptions.Compiled | RegexOptions.Multiline);
 
     public override async Task Invoke(IOwinContext context)
     {
@@ -36,17 +38,18 @@ public class NoHttpResourceFoundSanitizerMiddleware(OwinMiddleware next)
 
             // Check if the response contains the specific message
             if (!string.IsNullOrEmpty(responseBody) &&
-                responseBody.StartsWith("{\"Message\":\"No HTTP resource was found that matches the request URI"))
+                FindMessageWithUrlRegex.IsMatch(responseBody))
             {
                 // Modify the response here as needed
                 var noHttpResourceFoundResponse = JsonConvert.DeserializeObject<NoHttpResourceFoundResponse>(responseBody);
                 if (noHttpResourceFoundResponse is not null && !string.IsNullOrEmpty(noHttpResourceFoundResponse.Message))
                 {
-                    noHttpResourceFoundResponse.Message =
-                        noHttpResourceFoundResponse.Message!.Substring(0, NoHttpResourceFoundMessage.Length);
+                    noHttpResourceFoundResponse.Message = ReplaceUrlRegex.Replace(
+                        noHttpResourceFoundResponse.Message!,
+                        "$1.");
                 }
 
-                var sanitizedResponse = JsonConvert.SerializeObject(noHttpResourceFoundResponse, JsonSerializerSettings);
+                var sanitizedResponse = JsonConvert.SerializeObject(noHttpResourceFoundResponse);
                 var sanitizedBytes = Encoding.UTF8.GetBytes(sanitizedResponse);
 
                 // Write the modified response
