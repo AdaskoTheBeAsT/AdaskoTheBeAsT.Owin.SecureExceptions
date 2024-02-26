@@ -19,9 +19,9 @@ Scenario Outline: Calling api with some script injection
     Then I should get error with message '<expected>'
 
 Examples:
-    | sampleUrl                                                               | expected                                                                                   |
+    | sampleUrl                                                               | expected                                                                                    |
     | /api/values?query=<script>alert('xss')</script>                         | {"Message":"No HTTP resource was found that matches the request URI.","MessageDetail":null} |
-    | /api/values/%2522%253e%253cscript%253ealert('xss')%253c%252fscript%253e | "Error"                                                                                    |
+    | /api/values/%2522%253e%253cscript%253ealert('xss')%253c%252fscript%253e | "Error"                                                                                     |
     | /api/values?query="><script>alert('xss')</script>                       | {"Message":"No HTTP resource was found that matches the request URI.","MessageDetail":null} |
     | /api/values?query=%22onmouseover%3d%22alert('xss')%22                   | {"Message":"No HTTP resource was found that matches the request URI.","MessageDetail":null} |
     | /api/values?query=';DROP TABLE Users;--                                 | {"Message":"No HTTP resource was found that matches the request URI.","MessageDetail":null} |
