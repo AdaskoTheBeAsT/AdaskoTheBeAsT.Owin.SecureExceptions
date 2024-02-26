@@ -34,6 +34,7 @@ public partial class Startup
         httpConfiguration.UseWebApi2ExceptionHandler(secureExceptions);
 
         ConfigureRoute(httpConfiguration);
+
         app.UseWebApi(httpConfiguration);
         httpConfiguration.EnsureInitialized();
 
