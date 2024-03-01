@@ -9,7 +9,7 @@
     <RepositoryType>github</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <Description>Allows adjust OWIN response errors which reveals too much data. Based on https://github.com/abergs/OwinFriendlyExceptions.</Description>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.1.0</PackageVersion>
     <Authors>Adam "AdaskoTheBeAsT" Pluciński</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>

@@ -8,4 +8,10 @@
     <ProjectReference Include="..\..\..\src\AdaskoTheBeAsT.Owin.SecureExceptions\AdaskoTheBeAsT.Owin.SecureExceptions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
