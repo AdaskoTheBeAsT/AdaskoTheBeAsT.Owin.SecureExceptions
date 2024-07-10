@@ -56,6 +56,6 @@
   </PropertyGroup>
 
   <!-- Conditionally import Microsoft.WebApplication.targets only if not in Visual Studio -->
-  <Import Project="$(VSToolsPath_WebApplications)\Microsoft.WebApplication.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
+  <Import Project="$(VSToolsPath_WebApplications)\Microsoft.WebApplication.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true' AND '$(TF_BUILD)' == ''" />
 
 </Project>
