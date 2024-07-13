@@ -11,8 +11,7 @@
     <!--<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>-->
     <VisualStudioVersion>17.0</VisualStudioVersion>
     <MicrosoftNetCompilersToolset_Version>4.10.0</MicrosoftNetCompilersToolset_Version>
-    <MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version Condition="'$(TargetFramework)' == 'net462' OR '$(TargetFramework)' == 'net47' OR '$(TargetFramework)' == 'net471'">3.11.0</MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>
-    <MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version Condition="'$(TargetFramework)' == 'net472' OR '$(TargetFramework)' == 'net48' OR '$(TargetFramework)' == 'net481'">4.1.0</MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>
+    <MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>4.1.0</MicrosoftCodeDomProvidersDotNetCompilerPlatform_Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -56,6 +55,6 @@
   </PropertyGroup>
 
   <!-- Conditionally import Microsoft.WebApplication.targets only if not in Visual Studio -->
-  <Import Project="$(VSToolsPath_WebApplications)\Microsoft.WebApplication.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true' AND '$(TF_BUILD)' == ''" />
+  <Import Project="$(VSToolsPath_WebApplications)\Microsoft.WebApplication.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true'" />
 
 </Project>
