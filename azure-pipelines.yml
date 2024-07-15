@@ -45,7 +45,7 @@ steps:
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
-      arguments: "AdaskoTheBeAsT.Owin.SecureExceptions.sln --configuration $(buildConfiguration)"
+      arguments: "AdaskoTheBeAsT.Owin.SecureExceptions.sln --configuration $(buildConfiguration)  --no-restore"
 
   - task: CopyFiles@2
     displayName: "Copy nuget packages"
