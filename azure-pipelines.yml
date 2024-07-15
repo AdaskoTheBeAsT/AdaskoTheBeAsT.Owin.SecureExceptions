@@ -84,7 +84,9 @@ steps:
       solutionOrProjectPath: "AdaskoTheBeAsT.Owin.SecureExceptions.sln"
       failBuildLevelSelector: "Warning"
       resultsOutputFilePath: "$(Build.SourcesDirectory)/CodeQualityResults.xml"
-      additionalArguments: --no-build -f=XML
+      additionalArguments: >-
+        --no-build
+        -f=XML
 
   - task: SonarCloudAnalyze@2
     displayName: Sonar Cloud analyze

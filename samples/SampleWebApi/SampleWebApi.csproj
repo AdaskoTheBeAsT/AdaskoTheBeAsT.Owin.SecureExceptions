@@ -1,6 +1,7 @@
 <Project Sdk="MSBuild.SDK.SystemWeb/4.0.88">
 
   <PropertyGroup>
+    <!-- Order here does matter - different order can cause azure pipelines to break -->
     <TargetFramework>net481</TargetFramework>
     <UseIISExpress>true</UseIISExpress>
     <NoWarn>$(NoWarn);CC0091</NoWarn>
