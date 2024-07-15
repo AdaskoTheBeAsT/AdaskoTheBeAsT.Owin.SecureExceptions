@@ -38,7 +38,7 @@ public class SecureExceptionsMiddleware
     {
         var context = new OwinContext(environment);
 
-        Exception? exception = null;
+        Exception? exception;
         ITransform? transformer = null;
 
         try
