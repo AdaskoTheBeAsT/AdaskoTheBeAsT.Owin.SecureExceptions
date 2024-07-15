@@ -8,13 +8,12 @@ trigger:
   - refs/tags/v*
 
 pool:
-  vmImage: "windows-2022"
+  vmImage: "windows-latest"
 
 variables:
   buildConfiguration: "Release"
   unitTestProjects: "**/test/**/*.csproj"
   testResultsDirectory: "d:/a/1/TestResults"
-  MSBUILDSINGLELOADCONTEXT: 1
   disable.coverage.autogenerate: "true"
 
 steps:
@@ -45,7 +44,8 @@ steps:
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
-      arguments: "AdaskoTheBeAsT.Owin.SecureExceptions.sln --configuration $(buildConfiguration)  --no-restore"
+      projects: "AdaskoTheBeAsT.Owin.SecureExceptions.sln"
+      arguments: "--configuration $(buildConfiguration)  --no-restore"
 
   - task: CopyFiles@2
     displayName: "Copy nuget packages"
